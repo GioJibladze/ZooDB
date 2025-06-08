@@ -1,3 +1,5 @@
+CREATE DATABASE Zoo;
+
 CREATE TABLE Species (
     speciesId INT PRIMARY KEY,
     speciesName VARCHAR(50),
@@ -5,24 +7,18 @@ CREATE TABLE Species (
     feedingTime VARCHAR(20)
 );
 
-
-
--- Create Enclosures table
-
 CREATE TABLE Enclosures (
     enclosureId INT PRIMARY KEY,
     enclosureName VARCHAR(50),
     location VARCHAR(50)
 );
 
--- Create Zookeepers table
 CREATE TABLE Zookeepers (
     keeperId INT PRIMARY KEY,
     name VARCHAR(50),
     phone VARCHAR(20)
 );
 
--- Create Animals table
 CREATE TABLE Animals (
     animalId INT PRIMARY KEY,
     name VARCHAR(50),
@@ -31,8 +27,6 @@ CREATE TABLE Animals (
     keeperId INT FOREIGN KEY REFERENCES Zookeepers(keeperId),
     birthDate DATE
 );
-
--- Sample inserts
 
 INSERT INTO Species (speciesId, speciesName, typicalDiet, feedingTime) VALUES
 (1, 'Lion', 'Meat', '14:00'),
@@ -53,7 +47,6 @@ INSERT INTO Animals (animalId, name, speciesId, enclosureId, keeperId, birthDate
 (2, 'Gorlock', 2, 2, 2, '2010-09-15'),
 (3, 'Pingu', 3, 3, 1, '2018-12-25');
 
--- Query to get animal info with feeding schedule and keeper details
 SELECT 
     a.name AS AnimalName,
     s.speciesName,
